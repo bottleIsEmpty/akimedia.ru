@@ -1,0 +1,16 @@
+﻿@using akimedia.Models
+@model System.Collections.Generic.List<akimedia.Models.Movie>
+
+@{
+    ViewBag.Title = "Результаты поиска";
+}
+
+<h2>@ViewBag.Title</h2>
+<ul>
+
+    @foreach (var movie in Model)
+    {
+        <li>@movie.Title</li>
+    }
+
+</ul>

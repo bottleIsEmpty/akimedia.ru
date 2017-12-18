@@ -25,7 +25,22 @@ namespace akimedia
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/typeahead.css",
+                      "~/Content/font-awesome.css",
+                      "~/Content/jstarbox.css",
+                      "~/Content/toastr.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/scripts").Include(
+                "~/Scripts/umd/popper.js",
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/respond.js",
+                "~/Scripts/jquery.validate*",
+                "~/Scripts/typeahead.bundle.js",
+                "~/Scripts/jstarbox.js",
+                "~/Scripts/toastr.js"));
+
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "akimedia", "akimedia\akimedia.csproj", "{FA56DD8D-1FEC-42F7-BE72-E7F4E20602DD}"
 EndProject
@@ -9,12 +9,15 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Releasing|Any CPU = Releasing|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FA56DD8D-1FEC-42F7-BE72-E7F4E20602DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA56DD8D-1FEC-42F7-BE72-E7F4E20602DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA56DD8D-1FEC-42F7-BE72-E7F4E20602DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA56DD8D-1FEC-42F7-BE72-E7F4E20602DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA56DD8D-1FEC-42F7-BE72-E7F4E20602DD}.Releasing|Any CPU.ActiveCfg = Releasing|Any CPU
+		{FA56DD8D-1FEC-42F7-BE72-E7F4E20602DD}.Releasing|Any CPU.Build.0 = Releasing|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

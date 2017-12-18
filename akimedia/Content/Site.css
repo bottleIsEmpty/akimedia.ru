@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Custom styles */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.delete-genre {
+    color: red !important;
+}
+

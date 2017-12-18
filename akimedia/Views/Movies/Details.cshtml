@@ -1,0 +1,107 @@
+﻿@model akimedia.Models.Movie
+
+@{
+    ViewBag.Title = "Фильм";
+
+    var type = (Model.Type) ? "фильм" : "сериал";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h2>@Model.Title</h2>
+            @Html.HiddenFor(m => m.Id)
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <ul>
+                <li><b>Режиссёр: </b>@Model.Director.Name @Model.Director.Surname
+                    <div class="rating float-right" id="stars"></div>
+                </li>
+                <li class="mt-1"><b>Тип: </b>@type</li>
+                <li class="mt-1"><b>Год: </b>@Model.DateReleased.ToShortDateString()</li>
+                <li class="mt-1">
+                    <b>Жанры: </b>
+                    @foreach (var genre in Model.Genres)
+                    {
+                        @genre.Name@:,
+                    }
+                </li>
+                <li class="mt-1"><b>Описание: </b>@Model.Description</li>
+            </ul>
+        </div>
+        <div class="col-4">
+            <img src="@Url.Content("~/Content/images/common/no_poster.jpg")" class="img-fluid img-thumbnail float-right" alt="poster"/>
+        </div>
+        <hr/>
+        
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h4>Отзывы: </h4>
+            <hr />
+        </div>
+        <div class="container">
+            <div class="form-group row justify-content-center">
+                <label class="col-3">
+                    Оставить отзыв:
+                </label>
+                <div class="col-9 mb-2">
+                    <textarea class="form-control col-12 pr-2" rows="5" placeholder="Введите текст отзыва здесь"></textarea>
+                </div>
+                <button class="btn btn-primary">Добавить</button>
+            </div>
+            <p>Последние отзывы: </p>
+            <div class="card mb-2">
+                <div class="card-header">
+                    Дороу
+                </div>
+                <div class="card-body">
+                    Привет
+                </div>
+            </div>
+            <div class="card mb-2">
+                <div class="card-header">
+                    Дороу
+                </div>
+                <div class="card-body">
+                    Привет
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#stars").starbox({
+                average: 0.42,
+                changeable: 'once',
+                autoUpdateAverage: true,
+                ghosting: true
+            }).bind('starbox-value-changed',
+                function(event, value) {
+                    $.ajax({
+                        method: 'PUT',
+                        url: '/api/movies/' + $("#Id").val() + "/" + value * 5,
+                        success: function(data) {
+                            toastr.success(data);
+                        },
+                        error: function(data) {
+                            toastr.error(data);
+                        }
+                    });
+                });
+            //.done(function() {
+            //    toastr.success("Спасибо за Вашу оценку!");
+            //})
+            //.fail(function() {
+            //    toastr.fail("Упс, что-то от твоего кода попахивает, программист");
+            //});
+
+        })
+    </script>
+}

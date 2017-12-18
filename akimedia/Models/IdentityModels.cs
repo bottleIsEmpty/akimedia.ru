@@ -20,9 +20,20 @@ namespace akimedia.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Director> Directors { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Writer> Writers { get; set; }
+        public DbSet<BookGenre> BookGrenres { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Musician> Musicians { get; set; }
+        public DbSet<MusGenre> MusGenres { get; set; }
+        public DbSet<Music> Music { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+
         }
 
         public static ApplicationDbContext Create()

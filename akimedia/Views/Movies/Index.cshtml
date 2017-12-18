@@ -1,0 +1,58 @@
+﻿@model akimedia.ViewModels.IndexViewModel
+@using akimedia.Helpers
+
+@{
+    ViewBag.Title = "Фильмы";
+}
+
+<h2>Фильмы</h2>
+<div class="container">
+@if (!Model.Movies.Any())
+{
+    <text>фильмов не существует (в природе)</text>
+}
+else
+{
+    foreach (var movie in Model.Movies)
+    {
+        //string moviePoster = @"/Content/Images/common/no_poster.jpg";
+
+        string moviePoster = (movie.Poster == null) ?
+            @"/Content/Images/common/no_poster.jpg" :
+            @"/Files/" + movie.Poster;
+
+        <div class="row border rounded p-3 justify-content-between mb-2">
+            <ul class="col-8">
+                <li>
+                    <b>Название: </b>@Html.ActionLink(movie.Title, "Details", new { id = movie.Id })
+                </li>
+                <li>
+                    <b>Год: </b>@movie.DateReleased.Date.ToShortDateString()    
+                </li>
+                <li>
+                    <b>Режиссёр: </b>@movie.Director.Name @movie.Director.Surname
+                </li>
+                <li>
+                    <b>Жанры: </b>
+                    @foreach (var genre in movie.Genres)
+                    {
+                        <a href="#">@genre.Name</a>@:,
+                    }
+                </li>
+                <li>
+                    <b>Описание: </b>@movie.Description  
+                </li>
+                
+            </ul>
+            <div class="col-4">
+                <img src="@moviePoster" class="img-fluid img-thumbnail float-right" width="200px" alt="poster" role="presentation">
+            </div>
+        </div>
+
+
+    }
+    <div class="btn-group">
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+    </div>
+}
+</div>
